@@ -16,7 +16,7 @@ def checkout(skus):
     # Define the basic offers for each item
     basic_offers_table = {
         "A": [(5, 200), (3, 130)], "B": [(2, 45)], "F": [(3, 20)], "H": [(10, 80), (5, 45)],
-        "K": [(2, 150)], "P": [(5, 200)], "Q": [(3, 80)], "U": [(3, 80)], "V": [(3, 130), (2, 90)]
+        "K": [(2, 150)], "P": [(5, 200)], "Q": [(3, 80)], "U": [(4, 120)], "V": [(3, 130), (2, 90)]
     }
 
     # Define the offers for each item that affect another item
@@ -68,4 +68,5 @@ def checkout(skus):
             total_cost += count * price_table[item]
     
     return total_cost
+
 

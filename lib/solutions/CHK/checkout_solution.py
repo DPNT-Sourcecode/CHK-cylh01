@@ -54,13 +54,18 @@ def checkout(skus):
                 if sku_count[free_item] < 0:
                     sku_count[free_item] = 0
     
-    # Check and apply the group item offer
+    # Check and apply the group item offer:
+    # Calculate total amount of items eligible for discount
     group_count = sum(sku_count[item] for item in group_offers if item in sku_count)
+    
+    #While there are enough items to apply the group discount add the discounted price and track how many items to remove
     while group_count >= group_required_count:
         total_cost += group_discount
         group_count -= group_required_count
         items_to_remove = group_required_count
+        # Iterate over the group offer sorted by price in descending order
         for item in sorted(group_offers, key=lambda x: price_table[x], reverse=True):
+            # While there are items to remove and the current item is present in the basket, remove them
             while item in sku_count and sku_count[item] > 0 and items_to_remove > 0:
                 sku_count[item] -= 1
                 items_to_remove -= 1
@@ -89,4 +94,5 @@ def checkout(skus):
             total_cost += count * price_table[item]
     
     return total_cost
+
 

@@ -37,6 +37,7 @@ def checkout(skus):
     for item, count in sku_count.items():
         # Checks if the item has a special offer
         if item in offers_table:
+            for offer_count, offer_price in sorted(offers_table[item], reverse=True)
             offer_count, offer_price = offers_table[item]
             # Calculate how many items this offer can be applied to 
             num_offers = count // offer_count 
@@ -49,6 +50,7 @@ def checkout(skus):
             total_cost += count * price_table[item]
     
     return total_cost
+
 
 
 

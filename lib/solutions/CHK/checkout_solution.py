@@ -13,9 +13,12 @@ def checkout(skus):
     total_cost = 0
 
     # Validate input and add items to a counter
+    if not isinstance(skus, str) or skus == "":
+        return -1
+    
     sku_count = {}
     for sku in skus:
-        if sku not in price_table or not isinstance(skus, str) or skus == "":
+        if sku not in price_table:
             return -1
         elif sku in sku_count:
             sku_count[sku] += 1
@@ -38,5 +41,6 @@ def checkout(skus):
             total_cost += count * price_table[item]
     
     return total_cost
+
 
 

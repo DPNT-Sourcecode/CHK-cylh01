@@ -6,13 +6,21 @@ def checkout(skus):
     """ Cacluates the ottal cost of items in the supermarket basket
     
     """
-    # Define prices and offers
+    # Define the base price for each item
     price_table = {
         "A": 50, "B": 30, "C": 20, "D": 15, "E": 40, "F": 10, "G": 20, "H": 10,
         "I": 35, "J": 60, "K": 80, "L": 90, "M": 15, "N": 40, "O": 10, "P": 50,
         "Q": 30, "R": 50, "S": 30, "T": 20, "U": 40, "V": 50, "W": 20, "X": 90,
         "Y": 10, "Z": 50}
-    offers_table = {"A": [(5, 200), (3, 130)], "B": [(2, 45)], "F": [(3, 20)]} 
+    
+    # Define the basic offers for each item
+    basic_offers_table = {
+        "A": [(5, 200), (3, 130)], "B": [(2, 45)], "F": [(3, 20)], "H": [(10, 80), (5, 45)],
+        "K": [(2, 150)], "P": [(5, 200)], "Q": [(3, 80)], "U": [(3, 80)], "V": [(3, 130), (2, 90)]
+    }
+
+    # Define the offers for each item that affect another item
+    advanced_item_offers = {"E": ("B", 2), "N": ("M", 3), "R": ("Q", 3)} 
 
     # Track total cost of basket
     total_cost = 0
@@ -41,8 +49,8 @@ def checkout(skus):
     # Calculate the total price by adding the value of each item
     for item, count in sku_count.items():
         # Checks if the item has a special offer
-        if item in offers_table:
-            for offer_count, offer_price in sorted(offers_table[item], reverse=True):
+        if item in basic_offers_table:
+            for offer_count, offer_price in sorted(basic_offers_table[item], reverse=True):
                 if count >= offer_count:
                     # Calculate how many items this offer can be applied to 
                     num_offers = count // offer_count 
@@ -57,4 +65,5 @@ def checkout(skus):
             total_cost += count * price_table[item]
     
     return total_cost
+
 

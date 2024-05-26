@@ -25,6 +25,14 @@ def checkout(skus):
         else:
             sku_count[sku] = 1
     
+    # Check and apply the special offer of E
+    if "E" in sku_count and sku_count["E"] >= 2:
+        free_b = sku_count["E"] // 2
+        if "B" in sku_count:
+            sku_count["B"] -= free_b
+            if sku_count["B"] < 0:
+                sku_count["B"] = 0
+    
     # Calculate the total price by adding the value of each item
     for item, count in sku_count.items():
         # Checks if the item has a special offer
@@ -41,3 +49,4 @@ def checkout(skus):
             total_cost += count * price_table[item]
     
     return total_cost
+

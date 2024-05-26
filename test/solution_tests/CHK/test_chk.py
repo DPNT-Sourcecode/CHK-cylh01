@@ -22,10 +22,11 @@ class TestSum():
         assert checkout_solution.checkout("AAAAAA") == 250
         assert checkout_solution.checkout("AAAAAAA") == 300
         assert checkout_solution.checkout("BB") == 45
-        assert checkout_solution.checkout("AAAABBBCCDDEEFFFFFGHIJKLMNOPQRSTUVWXYZ") == 1215
-        assert checkout_solution.checkout("NNNRRRRHHHHHHMMQ") == 390
+        assert checkout_solution.checkout("SSZ") == 45
+        assert checkout_solution.checkout("SSZTTX") == 90
         assert checkout_solution.checkout("") == 0
         assert checkout_solution.checkout("123") == -1
+
 
 
 

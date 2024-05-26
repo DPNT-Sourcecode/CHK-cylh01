@@ -25,7 +25,7 @@ def checkout(skus):
     # Define the group offer items, discount price and required count
     group_offers = {"S", "T", "X", "Y", "Z"}
     group_discount = 45
-    group_count = 3
+    group_required_count = 3
 
     # Track total cost of basket
     total_cost = 0
@@ -54,7 +54,20 @@ def checkout(skus):
                 if sku_count[free_item] < 0:
                     sku_count[free_item] = 0
     
-    # Calculate the total price by adding the value of each item
+    # Check and apply the group item offer
+    group_count = sum(sku_count[item] for item in group_offers if item in sku_count)
+    while group_count >= group_required_count:
+        total_cost += group_discount
+        group_count -= group_required_count
+        for item in group_discount:
+            if item in sku_count:
+                sku_count[item] -= 1
+                if sku_count[item] == 0:
+                    del sku_count[item]
+                break
+
+
+    # Calculate the total price by adding the value of each item including special offers
     for item, count in sku_count.items():
         # Checks if the item has a special offer
         if item in basic_offers_table:
@@ -73,6 +86,7 @@ def checkout(skus):
             total_cost += count * price_table[item]
     
     return total_cost
+
 
 
 

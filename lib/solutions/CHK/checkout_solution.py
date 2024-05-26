@@ -6,13 +6,14 @@ def checkout(skus):
     """ Cacluates the ottal cost of items in the supermarket basket
     
     """
-    # Define prices
-    price_table = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40}
-    offers_table = {"A": [(5, 200), (3, 130)], "B": [(2, 45)]} 
+    # Define prices and offers
+    price_table = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40, "F": 10}
+    offers_table = {"A": [(5, 200), (3, 130)], "B": [(2, 45)], "F": [(3, 20)]} 
 
+    # Track total cost of basket
     total_cost = 0
 
-    # Validate input and add items to a counter
+    # Validate input and add all items to a counter
     if not isinstance(skus, str):
         return -1
     
@@ -52,8 +53,3 @@ def checkout(skus):
             total_cost += count * price_table[item]
     
     return total_cost
-
-
-
-
-

@@ -13,7 +13,3 @@ def hello(friend_name):
     str: A personalised greeting message
     """
     return f"Hello, {friend_name}!"
-
-
-
-

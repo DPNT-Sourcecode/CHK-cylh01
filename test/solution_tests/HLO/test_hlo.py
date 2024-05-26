@@ -7,4 +7,3 @@ class TestSum():
         assert hello_solution.hello("Mr. X") == "Hello, World!"
 
     
-

@@ -9,6 +9,7 @@ class TestSum():
         assert checkout_solution.checkout("D") == 15
         assert checkout_solution.checkout("E") == 40
         assert checkout_solution.checkout("F") == 10
+        assert checkout_solution.checkout("G") == 20
         assert checkout_solution.checkout("FFF") == 20
         assert checkout_solution.checkout("FFFF") == 30
         assert checkout_solution.checkout("FFFFF") == 40
@@ -25,7 +26,7 @@ class TestSum():
         assert checkout_solution.checkout("NNNRRRRHHHHHHMMQ") == 390
         assert checkout_solution.checkout("") == 0
         assert checkout_solution.checkout("123") == -1
-        assert checkout_solution.checkout("G") == -1
+
 
 
 

@@ -40,21 +40,14 @@ def checkout(skus):
     
     # Check and apply the advanced item offers
     for offer_item, (free_item, required_count) in advanced_item_offers.items():
-
+        # Check if the current item in the offer is in the basket and the required count is met
         if offer_item in sku_count and sku_count[offer_item] >= required_count:
-            free_count = sku_count[offer_item] 
+            # Calculate number of free items to be given
+            free_count = sku_count[offer_item] // required_count
             if free_item in sku_count:
                 sku_count[free_item] -= free_count
                 if sku_count[free_item] < 0:
                     sku_count[free_item] = 0
-
-    # Check and apply the special offer of E
-    # if "E" in sku_count and sku_count["E"] >= 2:
-    #    free_b = sku_count["E"] // 2
-    #    if "B" in sku_count:
-    #        sku_count["B"] -= free_b
-    #        if sku_count["B"] < 0:
-    #            sku_count["B"] = 0
     
     # Calculate the total price by adding the value of each item
     for item, count in sku_count.items():
@@ -75,3 +68,4 @@ def checkout(skus):
             total_cost += count * price_table[item]
     
     return total_cost
+

@@ -7,7 +7,7 @@ def checkout(skus):
     
     """
     # Define prices
-    price_table = {"A": 50, "B": 30, "C": 20, "D": 15}
+    price_table = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40}
     offers_table = {"A": (3, 130), "B": (2, 45)}
 
     total_cost = 0
@@ -41,7 +41,3 @@ def checkout(skus):
             total_cost += count * price_table[item]
     
     return total_cost
-
-
-
-

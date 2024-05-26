@@ -8,15 +8,15 @@ class TestSum():
         assert checkout_solution.checkout("C") == 20
         assert checkout_solution.checkout("D") == 15
         assert checkout_solution.checkout("E") == 40
+        assert checkout_solution.checkout("EEB") == 80
+        assert checkout_solution.checkout("EEBB") == 110
         assert checkout_solution.checkout("ABCD") == 115
         assert checkout_solution.checkout("AAA") == 130
         assert checkout_solution.checkout("BB") == 45
-        assert checkout_solution.checkout("AAAABBBCCDD") == 325
+        assert checkout_solution.checkout("AAAABBBCCDDEE") == 375
         assert checkout_solution.checkout("") == 0
         assert checkout_solution.checkout("123") == -1
         assert checkout_solution.checkout("F") == -1
-
-
 
 
 

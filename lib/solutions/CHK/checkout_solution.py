@@ -57,10 +57,10 @@ def checkout(skus):
     # Check and apply the group item offer
     group_count = sum(sku_count[item] for item in group_offers if item in sku_count)
     while group_count >= group_required_count:
-        total_cost += group_discount
+        total_cost += group_offers
         group_count -= group_required_count
-        for item in group_discount:
-            if item in sku_count:
+        for item in group_offers:
+            if item in sku_count and sku_count[item] > 0:
                 sku_count[item] -= 1
                 if sku_count[item] == 0:
                     del sku_count[item]
@@ -86,7 +86,3 @@ def checkout(skus):
             total_cost += count * price_table[item]
     
     return total_cost
-
-
-
-
